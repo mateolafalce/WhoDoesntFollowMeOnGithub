@@ -8,7 +8,7 @@
 
 *(The token to date is invalid, of course)*
 
-![logo]()
+![gif](gif.gif)
 
 </div>
 
