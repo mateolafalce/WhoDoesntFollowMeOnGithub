@@ -1,3 +1,4 @@
+extern crate winres;
 #[path="./request/get_following.rs"]
 mod get_following;
 #[path="./request/get_followers.rs"]
@@ -9,6 +10,8 @@ mod github_token;
 
 #[tokio::main]
 async fn main() {
+    let mut res: winres::WindowsResource = winres::WindowsResource::new();
+    res.set_icon("path/to/your/icon.ico");
     //Get username
     let mut user_input: String = username::username();
     //Get token
@@ -32,4 +35,5 @@ async fn main() {
     println!("------------------------------------------");
     println!("Press Enter to exit...");
     std::io::stdin().read_line(&mut user_input).expect("Failed to read line");
+    res.compile().unwrap();
 }
