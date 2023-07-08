@@ -16,6 +16,18 @@ This script written in Rust is aimed at providing the growing professional with 
 
 If you're interested in trying out this script and you have a `Windows` operating system, feel free to download the repository and run the file `who_doesnt_follow_me_on_github.exe`. If you have an alternative operating system, you can download the repository and then compile it with `Cargo`.
 
+---
+
+You have an analysis in *VirusTotal* of the .exe. In case you want to run the program independently, run `cargo run`!
+
+<div align="center">
+<a href="https://www.virustotal.com/gui/url/6ab0a1c7d0b1066b3a4b7f7d2efb4419cae1c867027fe3146b54f9f7384f98c0/detection">
+<img src="./VTlogo.png" alt="VirusTotalImage" height="40">
+</a>
+</div>
+
+---
+
 ## Dependencies
 
 ```toml
