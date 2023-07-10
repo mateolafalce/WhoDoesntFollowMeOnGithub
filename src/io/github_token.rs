@@ -3,7 +3,6 @@ pub fn github_token() -> String {
     println!("------------------------------------------");
     println!("Enter your Github token");
     println!("------------------------------------------");
-    // Create a mutable string to store the user input
     let mut token_input = String::new();
     // Read the user input from the standard input
     std::io::stdin().read_line(&mut token_input).expect("Failed to read line");
