@@ -74,7 +74,6 @@ async fn main() {
     println!("Press Enter to exit...");
     std::io::stdin().read_line(&mut user_input).expect("Failed to read line");
 }
-
 ```
 
 1. Inside the main function, the program starts by getting the username and token input from the user using the functions `username()` and `github_token()` respectively.
