@@ -31,6 +31,7 @@ You have an analysis in *VirusTotal* of the .exe. In case you want to run the pr
 ## Dependencies
 
 ```toml
+
 [dependencies]
 octorust = "0.3.2"
 tokio = { version = "1", features = ["full"] }
