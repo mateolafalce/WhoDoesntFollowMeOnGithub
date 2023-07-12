@@ -36,6 +36,8 @@ octorust = "0.3.2"
 tokio = { version = "1", features = ["full"] }
 ```
 
+---
+
 ## Code
 
 ```rust
@@ -89,6 +91,8 @@ async fn main() {
 6. If no users are found who don't follow the provided username, a message is printed indicating that all users the username follows also follow them.
 
 7. Finally, the program prompts the user to press Enter to exit and waits for input using `std::io::stdin().read_line()`.
+
+---
 
 ## License
 
