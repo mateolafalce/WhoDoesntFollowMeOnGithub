@@ -1,7 +1,4 @@
-pub async fn get_followers(
-    github: octorust::Client,
-    user: &str,
-) -> Vec<String> {
+pub async fn get_followers(github: octorust::Client, user: &str) -> Vec<String> {
     let followers_response = github.users().list_all_followers_for_user(user).await;
     let mut followers: Vec<String> = [].to_vec();
     match followers_response {

@@ -2,29 +2,21 @@
 
 ![logo](logo.png)
 
-# Who Doesn't follow me?
+# Who Doesn't follow me on github?
 
 ---
 
-*The token to date is invalid, of course*
 
-![gif](gif.gif)
 
 </div>
 
 This script written in Rust is aimed at providing the growing professional with the numbers associated with their GitHub account. By comparing followers and following, you will immediately know who is not interested in sharing or following your work.
 
-If you're interested in trying out this script and you have a `Windows` operating system, feel free to download the repository and run the file `who_doesnt_follow_me_on_github.exe`. If you have an alternative operating system, you can download the repository and then compile it with `Cargo`.
+Copy and paste the following script and run the project!
 
----
-
-You have an analysis in *VirusTotal* of the .exe. In case you want to run the program independently, run `cargo run --release`!
-
-<div align="center">
-  <a href="https://www.virustotal.com/gui/url/6ab0a1c7d0b1066b3a4b7f7d2efb4419cae1c867027fe3146b54f9f7384f98c0/detection">
-    <img src="./VTlogo.png" alt="VirusTotalImage" height="40">
-  </a>
-</div>
+```bash
+git clone https://github.com/mateolafalce/WhoDoesntFollowMeOnGithub.git && cd WhoDoesntFollowMeOnGithub && cargo run --release
+```
 
 ---
 
@@ -34,65 +26,41 @@ You have an analysis in *VirusTotal* of the .exe. In case you want to run the pr
 [dependencies]
 octorust = "0.3.2"
 tokio = { version = "1", features = ["full"] }
+rpassword = "7.2.0"
 ```
 
 ---
 
-## Code
+## main.rs
 
 ```rust
-#[path="./request/get_following.rs"]
-mod get_following;
-#[path="./request/get_followers.rs"]
+#[path = "./request/get_followers.rs"]
 mod get_followers;
-#[path="./io/username.rs"]
-mod username;
-#[path="./io/github_token.rs"]
-mod github_token;
+#[path = "./request/get_following.rs"]
+mod get_following;
+#[path = "./io/get_github_token.rs"]
+mod get_github_token;
+#[path = "./io/get_github_username.rs"]
+mod get_github_username;
+#[path = "./io/show_users_dont_follow.rs"]
+mod show_users_dont_follow;
 
 #[tokio::main]
 async fn main() {
-    //Get username
-    let mut user_input: String = username::username();
-    //Get token
-    let token_input: String = github_token::github_token();
-    let client: octorust::Client = octorust::Client::new(String::from("User"), octorust::auth::Credentials::Token(token_input.to_string())).unwrap();
-    // Retrieve the list of following and followers
-    let following: Vec<String> = get_following::get_following(client.clone(), &user_input).await;
-    let followers: Vec<String> = get_followers::get_followers(client.clone(), &user_input).await;
-    // Compare the following and followers lists
-    let mut users_amount = 0;
-    println!("------------------------------------------");
-    for user in following {
-        if !followers.contains(&user) {
-            println!("- {}, don't follow you", user);
-            users_amount += 1;
-        }
-    }
-    if users_amount == 0 {
-        println!("- All users that you follow, follow you too");
-    }
-    println!("------------------------------------------");
-    println!("Press Enter to exit...");
-    std::io::stdin().read_line(&mut user_input).expect("Failed to read line");
+    let github_username: String = get_github_username::get_github_username();
+    let github_token: String = get_github_token::get_github_token();
+    let client: octorust::Client = octorust::Client::new(
+        String::from("User"),
+        octorust::auth::Credentials::Token(github_token),
+    )
+    .unwrap();
+    let users_i_follow: Vec<String> =
+        get_following::get_following(client.clone(), &github_username).await;
+    let users_follow_me: Vec<String> =
+        get_followers::get_followers(client.clone(), &github_username).await;
+    show_users_dont_follow::show_users_dont_follow(users_i_follow, users_follow_me);
 }
 ```
-
-1. Inside the main function, the program starts by getting the username and token input from the user using the functions `username()` and `github_token()` respectively.
-
-2. A `octorust::Client` object is created using the provided token input, allowing the program to make API requests to GitHub. Octorust is a Rust library for interacting with the GitHub API.
-
-3. The program then proceeds to retrieve the list of users the provided username is following and the list of followers using the `get_following()` and `get_followers()` functions respectively. These functions likely make use of the `octorust::Client` object to fetch the data asynchronously.
-
-4. After obtaining the lists of following and followers, the program compares the two using a loop. For each user in the `following` list, it checks if that user is not present in the `followers` list. If a user is found who does not follow the provided username, it prints a message indicating that they don't follow the user.
-
-5. The program keeps track of the number of users who don't follow the provided username using the `users_amount` variable.
-
-6. If no users are found who don't follow the provided username, a message is printed indicating that all users the username follows also follow them.
-
-7. Finally, the program prompts the user to press Enter to exit and waits for input using `std::io::stdin().read_line()`.
-
----
 
 ## License
 
