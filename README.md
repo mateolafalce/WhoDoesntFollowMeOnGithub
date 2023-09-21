@@ -4,10 +4,6 @@
 
 # Who Doesn't follow me on github?
 
----
-
-
-
 </div>
 
 This script written in Rust is aimed at providing the growing professional with the numbers associated with their GitHub account. By comparing followers and following, you will immediately know who is not interested in sharing or following your work.
