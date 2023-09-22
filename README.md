@@ -1,8 +1,11 @@
 <div align="center">
 
-![logo](logo.png)
+![logo](https://user-images.githubusercontent.com/98977436/269937105-0695c6a6-d1e8-4ce0-96a0-04ec26a56439.png)
 
 # Who Doesn't follow me on github?
+
+
+![gif](https://user-images.githubusercontent.com/98977436/269937066-bdfd8465-2992-48c4-85d6-13c4557adcf9.gif)
 
 </div>
 
