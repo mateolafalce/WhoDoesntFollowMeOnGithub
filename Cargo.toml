@@ -1,12 +1,13 @@
 [package]
-name = "who_doesnt_follow_me_on_github"
-version = "0.1.0"
+name = "wdfm"
+version = "1.0.0"
 edition = "2021"
-authors = ["Mateo Lafalce <mateo.lafalce04@gmail.com>"]
+authors = ["Mateo Lafalce <mateolafalce@protonmail.com>"]
+license = "GPL-3.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 octorust = "0.3.2"
-tokio = { version = "1", features = ["full"] }
-rpassword = "7.2.0"
+tokio = { version = "1.35.1", features = ["full"] }
+rpassword = "7.3.1"

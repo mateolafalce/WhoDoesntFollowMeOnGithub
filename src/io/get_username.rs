@@ -1,5 +1,5 @@
 /***************************************************************************************
- *   show_users_dont_follow.rs  --  This file is part of who_doesnt_follow_me.         *
+ *   get_username.rs  --  This file is part of who_doesnt_follow_me.                   *
  *                                                                                     *
  *   Copyright (C) 2023 Mateo Lafalce                                                  *
  *                                                                                     *
@@ -17,19 +17,13 @@
  *   along with this program.  If not, see http://www.gnu.org/licenses/.               *
  *                                                                                     *
  **************************************************************************************/
- 
-pub fn show_users_dont_follow(users_i_follow: Vec<String>, users_follow_me: Vec<String>) {
-    std::process::Command::new("clear").status().unwrap();
-    let mut users_amount: u16 = 0;
-    
-    for user in users_i_follow {
-        if !users_follow_me.contains(&user) {
-            println!("- https://github.com/{} don't follow you", user);
-            users_amount += 1;
-        }
-    }
 
-    if users_amount == 0 {
-        println!("- All users that you follow, follow you too");
-    }
+pub fn get_username() -> String {
+    std::process::Command::new("clear").status().unwrap();
+    println!("Enter your Github username:");
+    let mut github_username = String::new();
+    std::io::stdin()
+        .read_line(&mut github_username)
+        .expect("Failed to read line");
+    github_username.trim().to_string()
 }
