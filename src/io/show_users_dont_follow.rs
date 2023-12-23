@@ -18,7 +18,7 @@
  *                                                                                     *
  **************************************************************************************/
 
-pub fn show_users_dont_follow(users_i_follow: &Vec<String>, users_follow_me: &Vec<String>) {
+pub fn show_users_dont_follow(users_i_follow: &[String], users_follow_me: &[String]) {
     std::process::Command::new("clear").status().unwrap();
     let difference: Vec<_> = users_i_follow
         .iter()
