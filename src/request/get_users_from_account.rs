@@ -28,7 +28,7 @@ pub async fn get_users_from_account(type_user: &str, user: &User) -> Vec<String>
     let user_str: String = "User".to_string();
     let token: Credentials = Credentials::Token(user.token.to_string());
     let client = Client::new(user_str, token).expect(TOKEN_ERROR);
-    
+
     let users_request = match type_user {
         "follower" => client.users().list_all_followers_for_user(&user.name).await,
         _ => client.users().list_all_following_for_user(&user.name).await,
