@@ -42,5 +42,5 @@ async fn main() {
     let users_i_follow: Vec<String> = get_users_from_account("following", &user).await;
     let users_follow_me: Vec<String> = get_users_from_account("follower", &user).await;
 
-    show_users_dont_follow(users_i_follow, users_follow_me);
+    show_users_dont_follow(&users_i_follow, &users_follow_me);
 }
