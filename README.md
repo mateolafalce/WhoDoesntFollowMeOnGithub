@@ -32,8 +32,8 @@ Just `wdfm` in your terminal!
 ```toml
 [dependencies]
 octorust = "0.3.2"
-tokio = { version = "1", features = ["full"] }
-rpassword = "7.2.0"
+tokio = { version = "1.35.1", features = ["full"] }
+rpassword = "7.3.1"
 ```
 
 ---
